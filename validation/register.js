@@ -5,16 +5,23 @@ module.exports = function validateRegisterInput(data) {
   let errors = {};
 
   // convert empty fields to string
-  data.name = !isEmpty(data.name) ? data.name : "";
+  data.firstName = !isEmpty(data.firstName) ? data.firstName : "";
+  data.lastName = !isEmpty(data.lastName) ? data.lastName : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 
-  //Name Check
-  if (Validator.isEmpty(data.name)) {
-    errors.name = "Name Field is Required";
-  } else if (data.name.length < 2) {
-    errors.name = "Name Field Must be at least 3 Characters long.";
+  //First and Last Name Check
+  if (Validator.isEmpty(data.firstName)) {
+    errors.firstName = "First Name is Required.";
+  } else if (data.firstName.length < 2) {
+    errors.firstName = "First Name Must be at Least 3 Characters Long.";
+  }
+
+  if (Validator.isEmpty(data.lastName)) {
+    errors.lastName = "Last Name is Required.";
+  } else if (data.lastName.length < 2) {
+    errors.lastName = "Last Name Must be at least 3 Characters Long.";
   }
 
   //Email Check
